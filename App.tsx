@@ -28,13 +28,21 @@ const App: React.FC = () => {
     return NO_MESSAGES[Math.min(noCount, NO_MESSAGES.length - 1)];
   }, [noCount]);
 
+  const footer = (
+    <footer className="absolute bottom-6 w-full text-center z-50">
+      <p className="text-rose-400 font-medium text-sm tracking-widest opacity-80 select-none">
+        (Made by Sourish ❤️)
+      </p>
+    </footer>
+  );
+
   // Success Screen: The Romantic Love Post
   if (isAccepted) {
     return (
       <div className="min-h-screen bg-gradient-to-br from-rose-200 via-pink-300 to-rose-100 flex flex-col items-center justify-center p-4 relative overflow-hidden">
         <FloatingHearts />
         
-        <div className="z-20 max-w-lg w-full animate-bounce-in px-4">
+        <div className="z-20 max-w-lg w-full animate-bounce-in px-4 mb-16">
           <div className="bg-white/95 backdrop-blur-xl rounded-[3rem] shadow-[0_30px_60px_rgba(244,63,94,0.4)] p-8 md:p-10 border-4 border-white transform transition-all hover:scale-[1.01]">
             <div className="flex items-center justify-between mb-8 border-b border-rose-50 pb-6">
               <div className="flex items-center gap-4">
@@ -91,6 +99,8 @@ const App: React.FC = () => {
              </button>
           </div>
         </div>
+
+        {footer}
 
         <style>{`
           @keyframes fade-in {
@@ -178,6 +188,8 @@ const App: React.FC = () => {
            </div>
         )}
       </div>
+
+      {footer}
     </div>
   );
 };
