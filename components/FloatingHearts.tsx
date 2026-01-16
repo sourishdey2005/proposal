@@ -6,13 +6,13 @@ const FloatingHearts: React.FC = () => {
   const [hearts, setHearts] = useState<Heart[]>([]);
 
   useEffect(() => {
-    const initialHearts = Array.from({ length: 20 }).map((_, i) => ({
+    const initialHearts = Array.from({ length: 25 }).map((_, i) => ({
       id: i,
       x: Math.random() * 100,
       y: Math.random() * 100,
       size: Math.random() * 20 + 10,
       duration: Math.random() * 10 + 10,
-      delay: Math.random() * 5,
+      delay: Math.random() * -20, // Negative delay to start immediately mid-animation
     }));
     setHearts(initialHearts);
   }, []);
@@ -22,7 +22,7 @@ const FloatingHearts: React.FC = () => {
       {hearts.map((heart) => (
         <div
           key={heart.id}
-          className="absolute text-pink-300 opacity-40 animate-float"
+          className="absolute text-rose-300 opacity-40"
           style={{
             left: `${heart.x}%`,
             top: `${heart.y}%`,
@@ -34,15 +34,6 @@ const FloatingHearts: React.FC = () => {
           ❤️
         </div>
       ))}
-      <style>{`
-        @keyframes float {
-          0%, 100% { transform: translateY(0) translateX(0) rotate(0deg); }
-          50% { transform: translateY(-100px) translateX(20px) rotate(20deg); }
-        }
-        .animate-float {
-          animation-iteration-count: infinite;
-        }
-      `}</style>
     </div>
   );
 };

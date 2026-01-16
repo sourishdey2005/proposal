@@ -9,7 +9,6 @@ const App: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    // Fade in effect on mount
     setIsVisible(true);
   }, []);
 
@@ -21,96 +20,81 @@ const App: React.FC = () => {
     setIsAccepted(true);
   };
 
-  // Calculate scaling for the YES button
   const yesButtonScale = useMemo(() => {
-    return 1 + noCount * 0.45;
+    return 1 + noCount * 0.4;
   }, [noCount]);
 
-  // Determine the current message for the NO button
   const currentNoMessage = useMemo(() => {
     return NO_MESSAGES[Math.min(noCount, NO_MESSAGES.length - 1)];
   }, [noCount]);
 
   if (isAccepted) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-rose-100 via-pink-200 to-red-100 flex flex-col items-center justify-center p-4 relative overflow-hidden">
+      <div className="min-h-screen bg-gradient-to-br from-rose-100 via-pink-100 to-red-50 flex flex-col items-center justify-center p-4 relative overflow-hidden">
         <FloatingHearts />
         
         <div className="z-10 text-center animate-bounce-in">
-          <h1 className="text-5xl md:text-7xl font-romantic text-rose-600 mb-8 drop-shadow-lg">
+          <h1 className="text-6xl md:text-8xl font-romantic text-rose-600 mb-8 drop-shadow-xl">
             YAY! I LOVE YOU ❤️💞
           </h1>
-          <div className="relative group">
-            <div className="absolute -inset-1 bg-gradient-to-r from-pink-600 to-rose-400 rounded-2xl blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>
+          <div className="relative group max-w-sm md:max-w-md mx-auto">
+            <div className="absolute -inset-2 bg-gradient-to-r from-pink-500 to-rose-500 rounded-3xl blur-xl opacity-40 group-hover:opacity-60 transition duration-500"></div>
             <img 
               src={SUCCESS_GIF} 
               alt="Celebration" 
-              className="relative rounded-2xl shadow-2xl w-full max-w-md mx-auto border-4 border-white transform transition duration-500 hover:scale-105"
+              className="relative rounded-2xl shadow-2xl w-full border-8 border-white transform transition duration-700 hover:rotate-3"
             />
           </div>
-          <p className="mt-8 text-xl text-rose-500 font-semibold italic animate-pulse">
+          <p className="mt-10 text-2xl text-rose-500 font-bold italic animate-pulse">
             The happiest person in the world right now! ✨
           </p>
         </div>
-
-        <style>{`
-          @keyframes bounce-in {
-            0% { transform: scale(0.3); opacity: 0; }
-            50% { transform: scale(1.05); opacity: 1; }
-            70% { transform: scale(0.9); }
-            100% { transform: scale(1); }
-          }
-          .animate-bounce-in {
-            animation: bounce-in 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
-          }
-        `}</style>
       </div>
     );
   }
 
   return (
-    <div className={`min-h-screen bg-gradient-to-br from-pink-100 via-rose-100 to-pink-200 flex flex-col items-center justify-center p-6 relative transition-opacity duration-1000 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
+    <div className={`min-h-screen flex flex-col items-center justify-center p-6 relative transition-opacity duration-1000 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
       <FloatingHearts />
 
-      <div className="z-10 text-center w-full max-w-2xl flex flex-col items-center">
-        <div className="mb-6 transform transition-transform duration-500 hover:scale-110">
+      <div className="z-10 text-center w-full max-w-3xl flex flex-col items-center">
+        <div className="mb-8 transform transition-transform duration-700 hover:scale-110">
           <img 
             src={WAITING_GIF} 
             alt="Waiting..." 
-            className="w-32 h-32 md:w-48 md:h-48 rounded-full border-4 border-rose-300 shadow-lg object-cover"
+            className="w-40 h-40 md:w-56 md:h-56 rounded-full border-4 border-white shadow-2xl object-cover animate-heartbeat"
           />
         </div>
 
-        <h1 className="text-4xl md:text-6xl font-romantic text-rose-500 mb-12 animate-fade-down">
+        <h1 className="text-5xl md:text-7xl font-romantic text-rose-500 mb-16 drop-shadow-md animate-fade-down">
           Will you be my Valentine? 💘
         </h1>
 
-        <div className="flex flex-col md:flex-row items-center justify-center gap-6 w-full h-auto min-h-[120px]">
+        <div className="flex flex-col md:flex-row items-center justify-center gap-8 w-full h-auto min-h-[140px]">
           {/* YES BUTTON */}
           <button
             onClick={handleYesClick}
-            className="bg-rose-500 hover:bg-rose-600 text-white font-bold rounded-full shadow-lg hover:shadow-rose-400/50 transition-all duration-300 flex items-center justify-center transform active:scale-95"
+            className="bg-rose-500 hover:bg-rose-600 text-white font-bold rounded-full shadow-[0_10px_20px_rgba(244,63,94,0.4)] transition-all duration-300 flex items-center justify-center transform active:scale-95 z-50 overflow-hidden whitespace-nowrap"
             style={{
-              padding: `${12 + noCount * 2}px ${32 + noCount * 4}px`,
-              fontSize: `${Math.min(1.2 + noCount * 0.2, 5)}rem`,
-              zIndex: 50,
-              boxShadow: '0 10px 15px -3px rgba(244, 63, 94, 0.4)',
-              transform: `scale(${Math.min(yesButtonScale, 15)})`,
-              maxWidth: '90vw'
+              padding: `${16 + noCount * 4}px ${40 + noCount * 8}px`,
+              fontSize: `${Math.min(1.2 + noCount * 0.3, 8)}rem`,
+              transform: `scale(${Math.min(yesButtonScale, 20)})`,
+              maxWidth: '95vw',
+              lineHeight: '1',
             }}
           >
             YES ❤️
           </button>
 
-          {/* NO BUTTON - stays visible but moves around slightly if desired, here we just update text */}
+          {/* NO BUTTON */}
           {noCount < 20 && (
             <button
               onClick={handleNoClick}
-              className="bg-gray-100 hover:bg-gray-200 text-gray-700 font-semibold py-3 px-8 rounded-full border-2 border-gray-200 shadow-sm transition-all duration-300 flex items-center justify-center active:scale-90"
+              className="bg-white/80 backdrop-blur-sm hover:bg-white text-gray-700 font-semibold py-4 px-10 rounded-full border-2 border-rose-100 shadow-lg transition-all duration-300 flex items-center justify-center active:scale-90 z-40"
               style={{
-                fontSize: '1rem',
-                zIndex: 40,
-                visibility: yesButtonScale > 10 ? 'hidden' : 'visible'
+                fontSize: '1.1rem',
+                opacity: yesButtonScale > 8 ? 0 : 1,
+                pointerEvents: yesButtonScale > 8 ? 'none' : 'auto'
               }}
             >
               <span key={noCount} className="animate-pop">
@@ -120,31 +104,14 @@ const App: React.FC = () => {
           )}
         </div>
 
-        {noCount > 0 && noCount < 10 && (
-           <p className="mt-8 text-rose-400 font-medium italic animate-bounce">
-              Don't you dare! 🥺
-           </p>
+        {noCount > 0 && noCount < 15 && (
+           <div className="mt-12 h-8">
+              <p className="text-rose-400 text-xl font-medium italic animate-pulse">
+                Click the big red button! 🥺
+              </p>
+           </div>
         )}
       </div>
-
-      <style>{`
-        @keyframes fade-down {
-          0% { opacity: 0; transform: translateY(-20px); }
-          100% { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes pop {
-          0% { transform: scale(1); }
-          50% { transform: scale(1.1); }
-          100% { transform: scale(1); }
-        }
-        .animate-fade-down {
-          animation: fade-down 1.2s ease-out;
-        }
-        .animate-pop {
-          animation: pop 0.3s ease-out;
-          display: inline-block;
-        }
-      `}</style>
     </div>
   );
 };
