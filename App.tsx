@@ -30,8 +30,8 @@ const App: React.FC = () => {
 
   const footer = (
     <footer className="absolute bottom-6 w-full text-center z-50">
-      <p className="text-rose-400 font-medium text-sm tracking-widest opacity-80 select-none">
-        (Made by Sourish ❤️)
+      <p className="text-rose-500 font-bold text-base tracking-widest drop-shadow-sm select-none animate-pulse">
+        Made by Sourish ❤️
       </p>
     </footer>
   );
@@ -44,9 +44,9 @@ const App: React.FC = () => {
         
         <div className="z-20 max-w-lg w-full animate-bounce-in px-4 mb-16">
           <div className="bg-white/95 backdrop-blur-xl rounded-[3rem] shadow-[0_30px_60px_rgba(244,63,94,0.4)] p-8 md:p-10 border-4 border-white transform transition-all hover:scale-[1.01]">
-            <div className="flex items-center justify-between mb-8 border-b border-rose-50 pb-6">
+            <div className="flex items-center justify-between mb-8 border-b border-rose-100 pb-6">
               <div className="flex items-center gap-4">
-                <div className="w-14 h-14 rounded-full bg-rose-500 flex items-center justify-center text-3xl shadow-inner border-2 border-rose-100">
+                <div className="w-14 h-14 rounded-full bg-rose-500 flex items-center justify-center text-3xl shadow-inner border-2 border-rose-100 animate-heartbeat">
                   💖
                 </div>
                 <div>
@@ -60,12 +60,13 @@ const App: React.FC = () => {
               <div className="text-rose-400 text-3xl animate-spin-slow">✨</div>
             </div>
 
-            <div className="relative rounded-3xl overflow-hidden mb-8 shadow-2xl group border-4 border-rose-50">
+            <div className="relative rounded-3xl overflow-hidden mb-8 shadow-2xl group border-4 border-rose-50 bg-rose-50 flex items-center justify-center min-h-[300px]">
               <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none z-10"></div>
               <img 
                 src={SUCCESS_GIF} 
                 alt="Sweet Love" 
-                className="w-full h-auto min-h-[300px] object-cover transform transition duration-2000 group-hover:scale-105"
+                className="w-full h-auto object-cover transform transition duration-1000 group-hover:scale-110"
+                onLoad={(e) => (e.currentTarget.classList.add('opacity-100'))}
                 onError={(e) => {
                   (e.target as HTMLImageElement).src = "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExdmV6am84MXpueG56Znd6Znd6Znd6Znd6Znd6Znd6Znd6Znd6JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1n/l4pTdcifP3L2778R2/giphy.gif";
                 }}
@@ -76,7 +77,7 @@ const App: React.FC = () => {
               <h1 className="text-5xl md:text-6xl font-romantic text-rose-600 drop-shadow-sm leading-tight">
                 Yes! I Love You Too! ❤️
               </h1>
-              <div className="bg-rose-50/50 p-6 rounded-2xl border border-rose-100">
+              <div className="bg-rose-50/70 p-6 rounded-2xl border border-rose-100 shadow-inner">
                 <p className="text-gray-700 text-lg md:text-xl leading-relaxed font-semibold italic">
                   "Every day with you is a dream come true. You're my favorite person, my best friend, and now... my Valentine!"
                 </p>
@@ -84,7 +85,7 @@ const App: React.FC = () => {
               
               <div className="pt-4 flex items-center justify-center gap-4 text-rose-400">
                 <span className="h-px bg-rose-200 flex-grow"></span>
-                <span className="font-romantic text-3xl">You & Me Always</span>
+                <span className="font-romantic text-3xl">Together Always</span>
                 <span className="h-px bg-rose-200 flex-grow"></span>
               </div>
             </div>
@@ -93,7 +94,7 @@ const App: React.FC = () => {
           <div className="mt-12 text-center animate-fade-in opacity-0" style={{ animationDelay: '1s', animationFillMode: 'forwards' }}>
              <button 
                 onClick={() => window.location.reload()}
-                className="bg-white text-rose-500 hover:bg-rose-500 hover:text-white px-10 py-4 rounded-full shadow-xl text-lg font-bold transition-all duration-300 transform hover:scale-110 active:scale-95 border-2 border-white"
+                className="bg-white text-rose-500 hover:bg-rose-500 hover:text-white px-10 py-4 rounded-full shadow-[0_10px_30px_rgba(244,63,94,0.3)] text-lg font-bold transition-all duration-300 transform hover:scale-110 active:scale-95 border-2 border-rose-500"
              >
                Click to feel the love again 🌹
              </button>
@@ -134,10 +135,7 @@ const App: React.FC = () => {
             <img 
               src={WAITING_GIF} 
               alt="Waiting..." 
-              className="relative w-48 h-48 md:w-64 md:h-64 rounded-full border-8 border-white shadow-[0_20px_50px_rgba(0,0,0,0.1)] object-cover animate-heartbeat z-10"
-              onError={(e) => {
-                (e.target as HTMLImageElement).src = "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHV6NnlqbzB6NnlqbzB6NnlqbzB6NnlqbzB6NnlqbzB6NnlqbzB6JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1n/c76IJLufpNUMo/giphy.gif";
-              }}
+              className="relative w-48 h-48 md:w-64 md:h-64 rounded-full border-8 border-white shadow-[0_20px_50px_rgba(0,0,0,0.1)] object-cover animate-heartbeat z-10 bg-white"
             />
           </div>
         </div>
