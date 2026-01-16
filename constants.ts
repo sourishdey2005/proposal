@@ -17,8 +17,8 @@ export const NO_MESSAGES = [
   "I'll give you ALL the love! 🌹"
 ];
 
-// User provided romantic image link (WebP)
+// User provided romantic image link
 export const SUCCESS_GIF = "https://res.cloudinary.com/dodhvvewu/image/upload/v1768582603/I-love-you-1-1024x1004_r0l18n.webp";
 
-// High-quality animated waiting GIF (Cinnamoroll holding a heart)
-export const WAITING_GIF = "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHV6NnlqbzB6NnlqbzB6NnlqbzB6NnlqbzB6NnlqbzB6NnlqbzB6JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1n/c76IJLufpNUMo/giphy.gif";
+// High-quality animated waiting GIF (Mocha Bear Hearts - very reliable)
+export const WAITING_GIF = "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHV6NnlqbzB6NnlqbzB6NnlqbzB6NnlqbzB6NnlqbzB6NnlqbzB6JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1n/MDJ9IbxxvDUQM/giphy.gif";
