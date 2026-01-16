@@ -29,8 +29,8 @@ const App: React.FC = () => {
   }, [noCount]);
 
   const footer = (
-    <footer className="absolute bottom-6 w-full text-center z-50">
-      <p className="text-rose-500 font-bold text-base tracking-widest drop-shadow-sm select-none animate-pulse">
+    <footer className="absolute bottom-6 w-full text-center z-50 pointer-events-none">
+      <p className="text-rose-600 font-bold text-lg tracking-widest drop-shadow-md select-none animate-pulse">
         Made by Sourish ❤️
       </p>
     </footer>
@@ -42,7 +42,7 @@ const App: React.FC = () => {
       <div className="min-h-screen bg-gradient-to-br from-rose-200 via-pink-300 to-rose-100 flex flex-col items-center justify-center p-4 relative overflow-hidden">
         <FloatingHearts />
         
-        <div className="z-20 max-w-lg w-full animate-bounce-in px-4 mb-16">
+        <div className="z-20 max-w-lg w-full animate-bounce-in px-4 mb-20">
           <div className="bg-white/95 backdrop-blur-xl rounded-[3rem] shadow-[0_30px_60px_rgba(244,63,94,0.4)] p-8 md:p-10 border-4 border-white transform transition-all hover:scale-[1.01]">
             <div className="flex items-center justify-between mb-8 border-b border-rose-100 pb-6">
               <div className="flex items-center gap-4">
@@ -61,12 +61,11 @@ const App: React.FC = () => {
             </div>
 
             <div className="relative rounded-3xl overflow-hidden mb-8 shadow-2xl group border-4 border-rose-50 bg-rose-50 flex items-center justify-center min-h-[300px]">
-              <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none z-10"></div>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent pointer-events-none z-10"></div>
               <img 
                 src={SUCCESS_GIF} 
                 alt="Sweet Love" 
-                className="w-full h-auto object-cover transform transition duration-1000 group-hover:scale-110"
-                onLoad={(e) => (e.currentTarget.classList.add('opacity-100'))}
+                className="w-full h-auto object-contain max-h-[450px] transform transition duration-1000 group-hover:scale-110"
                 onError={(e) => {
                   (e.target as HTMLImageElement).src = "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExdmV6am84MXpueG56Znd6Znd6Znd6Znd6Znd6Znd6Znd6Znd6JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1n/l4pTdcifP3L2778R2/giphy.gif";
                 }}
@@ -91,7 +90,7 @@ const App: React.FC = () => {
             </div>
           </div>
           
-          <div className="mt-12 text-center animate-fade-in opacity-0" style={{ animationDelay: '1s', animationFillMode: 'forwards' }}>
+          <div className="mt-8 text-center animate-fade-in opacity-0" style={{ animationDelay: '1s', animationFillMode: 'forwards' }}>
              <button 
                 onClick={() => window.location.reload()}
                 className="bg-white text-rose-500 hover:bg-rose-500 hover:text-white px-10 py-4 rounded-full shadow-[0_10px_30px_rgba(244,63,94,0.3)] text-lg font-bold transition-all duration-300 transform hover:scale-110 active:scale-95 border-2 border-rose-500"
